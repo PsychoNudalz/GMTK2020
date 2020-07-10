@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
-    float speed = 60f;
-    float turnSpeed = 5f;
-    float drift = 0.9f;
+    [SerializeField] float speed = 60f;
+    [SerializeField] float turnSpeed = 5f;
+    [SerializeField] float drift = 0.9f;
 
     Dictionary<string, KeyCode> controlsMap = new Dictionary<string, KeyCode>();
+    private KeyCode[] keys = { KeyCode.W, KeyCode.A, KeyCode.S, KeyCode.D };
 
     // Start is called before the first frame update
     void Start()
@@ -47,13 +48,13 @@ public class CarController : MonoBehaviour
         if (Input.GetKey(controlsMap["Left"]))
         {
             Debug.Log("Left");
-            car.AddTorque(1 * turnSpeed);
+            car.angularVelocity = 1 * turnSpeed;
         }
 
         if (Input.GetKey(controlsMap["Right"]))
         {
             Debug.Log("Right");
-            car.AddTorque(-1 * turnSpeed);
+            car.angularVelocity = -1 * turnSpeed;
         }
 
         
@@ -66,6 +67,11 @@ public class CarController : MonoBehaviour
         Vector2 SidewaysVelocity()
         {
             return transform.right * Vector2.Dot(GetComponent<Rigidbody2D>().velocity, transform.right);
+        }
+
+        void changeControls()
+        {
+            
         }
     }
 }
