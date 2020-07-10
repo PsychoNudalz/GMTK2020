@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
-    public Transform Vehicle;
-    float speed = 50f;
+    float speed = 60f;
+    float turnSpeed = 5f;
+    float drift = 0.9f;
+
     Dictionary<string, KeyCode> controlsMap = new Dictionary<string, KeyCode>();
 
     // Start is called before the first frame update
@@ -19,32 +21,51 @@ public class CarController : MonoBehaviour
         controlsMap.Add("Right", KeyCode.D);
 
     }
-
+    
     // Update is called once per frame
     void Update()
     {
-        
 
-        if (Input.GetKeyDown(controlsMap["Forward"]))
+        Rigidbody2D car = GetComponent<Rigidbody2D>();
+
+        car.velocity = ForwardVelocity() + SidewaysVelocity() * drift;
+
+        if (Input.GetKey(controlsMap["Forward"]))
         {
             Debug.Log("Forward");
-            Vehicle.GetComponent<Rigidbody2D>().AddForce(transform.up * speed);
+            car.GetComponent<Rigidbody2D>().AddForce(transform.up * speed);
         }
 
-        if (Input.GetKeyDown(controlsMap["Backward"]))
+        if (Input.GetKey(controlsMap["Backward"]))
         {
             Debug.Log("Backward");
+            car.GetComponent<Rigidbody2D>().AddForce(transform.up * (speed * -1));
+
+
         }
 
-        if (Input.GetKeyDown(controlsMap["Left"]))
+        if (Input.GetKey(controlsMap["Left"]))
         {
             Debug.Log("Left");
+            car.AddTorque(1 * turnSpeed);
         }
 
-        if (Input.GetKeyDown(controlsMap["Right"]))
+        if (Input.GetKey(controlsMap["Right"]))
         {
             Debug.Log("Right");
+            car.AddTorque(-1 * turnSpeed);
         }
 
+        
+
+        Vector2 ForwardVelocity()
+        {
+            return transform.up * Vector2.Dot(GetComponent<Rigidbody2D>().velocity, transform.up);
+        }
+
+        Vector2 SidewaysVelocity()
+        {
+            return transform.right * Vector2.Dot(GetComponent<Rigidbody2D>().velocity, transform.right);
+        }
     }
 }
