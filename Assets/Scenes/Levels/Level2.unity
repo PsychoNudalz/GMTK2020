@@ -1635,51 +1635,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4649597920900156804, guid: 936e7b69e7d744a4185b5379c30f6616,
-        type: 3}
-      propertyPath: LevelName
-      value: Level 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5327898719193055919, guid: 936e7b69e7d744a4185b5379c30f6616,
         type: 3}
       propertyPath: playerCar
       value: 
       objectReference: {fileID: 104646490}
-    - target: {fileID: 5488299923271104324, guid: 936e7b69e7d744a4185b5379c30f6616,
-        type: 3}
-      propertyPath: m_Name
-      value: LevelNameText
-      objectReference: {fileID: 0}
-    - target: {fileID: 6893357796918440673, guid: 936e7b69e7d744a4185b5379c30f6616,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 7808377214911554532, guid: 936e7b69e7d744a4185b5379c30f6616,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7808377214911554532, guid: 936e7b69e7d744a4185b5379c30f6616,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7808377214911554532, guid: 936e7b69e7d744a4185b5379c30f6616,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7808377214911554532, guid: 936e7b69e7d744a4185b5379c30f6616,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7808377214911554532, guid: 936e7b69e7d744a4185b5379c30f6616,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8255627416035885187, guid: 936e7b69e7d744a4185b5379c30f6616,
         type: 3}
       propertyPath: m_Name

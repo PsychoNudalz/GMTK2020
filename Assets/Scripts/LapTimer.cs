@@ -112,7 +112,7 @@ public class LapTimer : MonoBehaviour
     void UpdateTimeUI()
     {
         TimeUI.text = currentTime.ToString("0");
-        CurrentLap.text = "Current Lap: " + FormatTime(currentTime);
+        CurrentLap.text = "Current Lap : " + FormatTime(currentTime);
     }
 
     public void ResetCurrentTime()
