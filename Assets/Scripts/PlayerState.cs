@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerState : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public CarController carController;
+    public CarEffecrScript carEffecrScript;
     [Header("Health")]
     public float MaxHealth = 100;
     [SerializeField] private float currentHealth;
@@ -18,6 +20,10 @@ public class PlayerState : MonoBehaviour
     [SerializeField] private ArrayList speedModDic = new ArrayList();
 
 
+
+    [Header("Other")]
+    public bool immune = true;
+
     public bool Slowed { get => slowed; set => slowed = value; }
 
 
@@ -27,6 +33,10 @@ public class PlayerState : MonoBehaviour
         if (rb.Equals(null))
         {
             rb = GetComponent<Rigidbody2D>();
+        }
+        if (carController.Equals(null))
+        {
+            carController = GetComponent<CarController>();
         }
         currentHealth = MaxHealth;
         currentMaxSpeed = MaxSpeed*maxSpeedMod;
@@ -102,5 +112,14 @@ public class PlayerState : MonoBehaviour
         {
             speedModDic.Remove(mod);
         }
+    }
+
+    public void randomiseControls()
+    {
+        if (!immune)
+        {
+            carController.RandomiseControls();
+        }
+        carEffecrScript.playJam();
     }
 }

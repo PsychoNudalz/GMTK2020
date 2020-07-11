@@ -39,7 +39,7 @@ public class FinishLineScript : MonoBehaviour
     {
         foreach (CheckpointScript c in checkpoints)
         {
-            c.Passed = false;
+            c.resetCheckpoint();
         }
     }
 }

@@ -90,7 +90,7 @@ public class CarController : MonoBehaviour
         return transform.right * Vector2.Dot(GetComponent<Rigidbody2D>().velocity, transform.right);
     }
 
-    void RandomiseControls()
+    public void RandomiseControls()
     {
         //shuffle array
         for (int x = 0; x < keys.Length; x++)

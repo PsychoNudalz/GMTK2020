@@ -28,7 +28,7 @@ public class UpdateControlsUI : MonoBehaviour
 
     private void Update()
     {
-        rotateControlsToCar();
+        //rotateControlsToCar();
         UpdateControls();
     }
 
