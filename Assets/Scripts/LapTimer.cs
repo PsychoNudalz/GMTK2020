@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Runtime.InteropServices;
 
 public class LapTimer : MonoBehaviour
 {
@@ -12,20 +13,31 @@ public class LapTimer : MonoBehaviour
     [SerializeField] private float currentTime;
     private int numberOfLaps = 5;
     public TextMeshProUGUI TimeUI;
+    public TextMeshProUGUI LapNumber;
+    public TextMeshProUGUI HighScore;
     public TextMeshProUGUI LapTimes;
     public TextMeshProUGUI CurrentLap;
-    public TextMeshProUGUI LapNumber;
+    
 
     private bool isRunnning = true;
+    private bool highscore = false;
+    public string LevelName = "Level-1";
+
     private float[] times;
 
     // Start is called before the first frame update
     void Start()
     {
+        if(PlayerPrefs.GetFloat("Highscore" + LevelName) == 0f)
+        {
+            PlayerPrefs.SetFloat("Highscore" + LevelName, 3599.999f);
+        }
         times = new float[numberOfLaps+1];
         LapNumber.text = ("Lap " + (lapCounter+1));
-        LapTimes.text = "Lap " + (lapCounter + 1) + " : --.--";
+        HighScore.text = "Best Time : " + FormatTime(PlayerPrefs.GetFloat("Highscore" + LevelName));
+        LapTimes.text = "Lap " + (lapCounter + 1) + " : --:--:--";
         resetCurrentTime();
+
     }
 
     // Update is called once per frame
@@ -49,12 +61,12 @@ public class LapTimer : MonoBehaviour
         if (isRunnning)
         {
             times[lapCounter] = currentTime;
-            LapTimes.text = LapTimes.text.Substring(0, LapTimes.text.Length - 5) + string.Format("{0}\nLap {1} : --.--", times[lapCounter].ToString("0.00"), lapCounter + 2);
+            LapTimes.text = LapTimes.text.Substring(0, LapTimes.text.Length - 9) + string.Format("{0}\nLap {1} : --:--:---", FormatTime(times[lapCounter]), lapCounter + 2);
             lapCounter += 1;
             LapNumber.text = "Lap " + (lapCounter + 1);
             resetCurrentTime();
 
-            //If is the last lap calculate and display total time.
+            //If is the last lap calculate and display total time check for highscore.
             if(lapCounter == numberOfLaps)
             {
                 isRunnning = false;
@@ -64,19 +76,41 @@ public class LapTimer : MonoBehaviour
                     totalTime += time;
                 }
                 times[lapCounter] = totalTime;
-                LapTimes.text = LapTimes.text.Substring(0, LapTimes.text.Length - 13) + string.Format("Total Time : {0}", times[lapCounter].ToString("0.00"));
-                CurrentLap.text = string.Format("Total Time : {0}", times[lapCounter].ToString("0.00"));
-                TimeUI.text = string.Format("Total Time\n{0}", times[lapCounter].ToString("0.00"));
+                LapTimes.text = LapTimes.text.Substring(0, LapTimes.text.Length - 17);
+                CurrentLap.text = string.Format("Total Time : {0}", FormatTime(times[lapCounter]));
+                TimeUI.text = string.Format("Total Time\n{0}", FormatTime( times[lapCounter]));
                 LapNumber.text = "FINISHED!";
+                CheckHighScore(totalTime);
             }
         }
         
     }
 
+    bool CheckHighScore(float totalTime)
+    {
+        if (totalTime < PlayerPrefs.GetFloat("Highscore" + LevelName))
+        {
+            PlayerPrefs.SetFloat("Highscore" + LevelName, totalTime);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    string FormatTime(float time)
+    {
+        int minutes = (int)time / 60;
+        int seconds = (int)time - 60 * minutes;
+        int milliseconds = (int)(1000 * (time - minutes * 60 - seconds));
+        return string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
+    }
+
     void updateTimeUI()
     {
         TimeUI.text = currentTime.ToString("0");
-        CurrentLap.text = "Current Lap: " + currentTime.ToString("0.00");
+        CurrentLap.text = "Current Lap: " + FormatTime(currentTime);
     }
 
     void resetCurrentTime()
