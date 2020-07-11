@@ -5,7 +5,10 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
-    [SerializeField] float speed = 60f;
+    public PlayerState playerState;
+    public Rigidbody2D car;
+    [SerializeField] float currentSpeed;
+    [SerializeField] float accel = 60f;
     [SerializeField] float turnSpeed = 5f;
     [SerializeField] float drift = 0.9f;
     public UpdateControlsUI controlUI;
@@ -16,18 +19,14 @@ public class CarController : MonoBehaviour
     void Start()
     {
 
+
         ResetControls();
 
     }
-    
+
     // Update is called once per frame
     void Update()
     {
-
-        Rigidbody2D car = GetComponent<Rigidbody2D>();
-
-        car.velocity = ForwardVelocity() + SidewaysVelocity() * drift;
-
         //randomise controls on space
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -41,14 +40,14 @@ public class CarController : MonoBehaviour
 
         if (Input.GetKey(controlsMap["Forward"]))
         {
-            //Debug.Log("Forward");
-            car.GetComponent<Rigidbody2D>().AddForce(transform.up * speed);
+            Debug.Log("Forward");
+            car.GetComponent<Rigidbody2D>().AddForce(transform.up * accel*Time.deltaTime*100);
         }
 
         if (Input.GetKey(controlsMap["Backward"]))
         {
-            //Debug.Log("Backward");
-            car.GetComponent<Rigidbody2D>().AddForce(transform.up * (speed * -1));
+            Debug.Log("Backward");
+            car.GetComponent<Rigidbody2D>().AddForce(transform.up * (accel * -1) * Time.deltaTime * 100);
 
 
         }
@@ -64,40 +63,46 @@ public class CarController : MonoBehaviour
             //Debug.Log("Right");
             car.angularVelocity = -1 * turnSpeed;
         }
-
-        
-
-        Vector2 ForwardVelocity()
+        car.velocity = ForwardVelocity() + SidewaysVelocity() * drift;
+        if (car.velocity.magnitude > playerState.getCurrentMaxSpeed())
         {
-            return transform.up * Vector2.Dot(GetComponent<Rigidbody2D>().velocity, transform.up);
-        }
-
-        Vector2 SidewaysVelocity()
-        {
-            return transform.right * Vector2.Dot(GetComponent<Rigidbody2D>().velocity, transform.right);
-        }
-
-        void RandomiseControls()
-        {
-            //shuffle array
-            for (int x = 0; x < keys.Length; x++)
-            {
-                KeyCode tmp = keys[x];
-                int r = Random.Range(x, keys.Length);
-                keys[x] = keys[r];
-                keys[r] = tmp;
-            }
-
-            controlsMap = new Dictionary<string, KeyCode>();
-            controlsMap.Add("Forward", keys[0]);
-            controlsMap.Add("Backward", keys[1]);
-            controlsMap.Add("Left", keys[2]);
-            controlsMap.Add("Right", keys[3]);
-
-            controlUI.UpdateControls(controlsMap);
-
+            car.velocity = car.velocity.normalized * playerState.getCurrentMaxSpeed();
         }
     }
+
+
+
+    Vector2 ForwardVelocity()
+    {
+        return transform.up * Vector2.Dot(GetComponent<Rigidbody2D>().velocity, transform.up);
+    }
+
+    Vector2 SidewaysVelocity()
+    {
+        return transform.right * Vector2.Dot(GetComponent<Rigidbody2D>().velocity, transform.right);
+    }
+
+    void RandomiseControls()
+    {
+        //shuffle array
+        for (int x = 0; x < keys.Length; x++)
+        {
+            KeyCode tmp = keys[x];
+            int r = Random.Range(x, keys.Length);
+            keys[x] = keys[r];
+            keys[r] = tmp;
+        }
+
+        controlsMap = new Dictionary<string, KeyCode>();
+        controlsMap.Add("Forward", keys[0]);
+        controlsMap.Add("Backward", keys[1]);
+        controlsMap.Add("Left", keys[2]);
+        controlsMap.Add("Right", keys[3]);
+
+        controlUI.UpdateControls(controlsMap);
+
+    }
+
     void ResetControls()
     {
         controlsMap = new Dictionary<string, KeyCode>();
@@ -107,5 +112,10 @@ public class CarController : MonoBehaviour
         controlsMap.Add("Right", KeyCode.D);
 
         controlUI.UpdateControls(controlsMap);
+    }
+
+    void capSpeed()
+    {
+
     }
 }
