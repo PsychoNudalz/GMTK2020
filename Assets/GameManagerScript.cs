@@ -12,7 +12,7 @@ public class GameManagerScript : MonoBehaviour
 
     [Header("Player States")]
     public PlayerState playerState;
-    public TextMeshPro SpeedUI;
+    public TextMeshProUGUI SpeedUI;
 
     // Start is called before the first frame update
     void Start()
@@ -24,12 +24,17 @@ public class GameManagerScript : MonoBehaviour
     void Update()
     {
         currentTime = Time.time - startTime;
-        updateTime();
-        
+        updateTimeUI();
+        updateSpeedUI();
     }
 
-    void updateTime()
+    void updateTimeUI()
     {
         TimeUI.text = currentTime.ToString("0");
+    }
+
+    void updateSpeedUI()
+    {
+        SpeedUI.text = playerState.getSpeed().ToString("0");
     }
 }

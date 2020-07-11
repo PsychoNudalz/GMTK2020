@@ -5,13 +5,18 @@ using UnityEngine;
 public class PlayerState : MonoBehaviour
 {
 
+    public Rigidbody2D rb;
     public float MaxHealth = 100;
-    public float Speed = 0;
+    public float MaxSpeed = 0;
     [SerializeField] private float currentHealth;
     [SerializeField] private bool DEAD;
     // Start is called before the first frame update
     void Start()
     {
+        if (rb.Equals(null))
+        {
+            rb = GetComponent<Rigidbody2D>();
+        }
         currentHealth = MaxHealth;
     }
 
@@ -42,7 +47,7 @@ public class PlayerState : MonoBehaviour
 
     public float getSpeed()
     {
-        return Speed;
+        return rb.velocity.magnitude;
     }
 
 
