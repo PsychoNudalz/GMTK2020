@@ -13,7 +13,7 @@ public class LapTimer : MonoBehaviour
     [SerializeField] int lapCounter = 0;
     [SerializeField] private float startTime;
     [SerializeField] private float currentTime;
-    private int numberOfLaps = 5;
+    [SerializeField] private int numberOfLaps = 5;
     public TextMeshProUGUI TimeUI; 
     public TextMeshProUGUI LapNumber;
     public TextMeshProUGUI HighScore;

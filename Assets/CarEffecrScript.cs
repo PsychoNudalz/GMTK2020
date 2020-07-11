@@ -52,7 +52,6 @@ public class CarEffecrScript : MonoBehaviour
 
                 driveEffect.Stop();
                 }
-                print(driveEffect.isPlaying);
 
             }
         }

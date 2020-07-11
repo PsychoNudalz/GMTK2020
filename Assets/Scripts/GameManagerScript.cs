@@ -10,16 +10,20 @@ public class GameManagerScript : MonoBehaviour
 
     [Header("Player States")]
     public PlayerState playerState;
+    public CarController carController;
     public TextMeshProUGUI SpeedUI;
+
+    [Header("Time Control")]
     public TextMeshProUGUI countdownTimer;
     public LapTimer laptimer;
-    public CarController carController;
-    public TextMeshProUGUI levelNameText;
-
     private float maxTimer = 5f;
     private float timer;
     private bool timerRunning = true;
     [SerializeField] bool useCountdown = true;
+
+    [Header("Level")]
+    public TextMeshProUGUI levelNameText;
+    public SpriteRenderer startLightRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +39,6 @@ public class GameManagerScript : MonoBehaviour
     {
         countdown();
         updateSpeedUI();
-
     }
     
     void countdown()
@@ -53,6 +56,7 @@ public class GameManagerScript : MonoBehaviour
             {
                 timer -= 1 * Time.deltaTime;
                 countdownTimer.text = timer.ToString("0");
+                startLightRenderer.material.SetFloat("_ShiftValue", 1-(timer) / maxTimer);
             }
             if (timer < 0.5f)
             {
