@@ -13,7 +13,7 @@ public class FinishLineScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (checkCheckpoints())
+        if (checkCheckpoints() && collision.CompareTag("Player"))
         {
             lapTimer.CompleteLap();
             clearCheckpoints();

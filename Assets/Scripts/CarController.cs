@@ -18,7 +18,12 @@ public class CarController : MonoBehaviour
     public Dictionary<string, KeyCode> ControlsMap { get => controlsMap; set => controlsMap = value; }
 
     public bool isRunning = false;
-    
+
+    [Header("AI Controls")]
+    public bool AI = false;
+    public float randomShiftTime = 5f;
+    [SerializeField] float currentRandomShiftTime = -1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,9 +79,15 @@ public class CarController : MonoBehaviour
             {
                 car.velocity = car.velocity.normalized * playerState.getCurrentMaxSpeed();
             }
+            if (AI)
+            {
+                AIControl();
+               
+            }
         }
+
     }
- 
+
 
 
 
@@ -120,8 +131,32 @@ public class CarController : MonoBehaviour
 
     }
 
-    void capSpeed()
+    void AIControl()
     {
+        currentRandomShiftTime -= Time.deltaTime;
+        if (currentRandomShiftTime <= 0)
+        {
+            RandomiseControls();
+            currentRandomShiftTime = randomShiftTime;
+        }
+        if (!Input.anyKeyDown)
+        {
+            car.GetComponent<Rigidbody2D>().AddForce(transform.up * accel * Time.deltaTime * car.mass * 100);
 
+        }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (AI)
+        {
+            if (collision.collider.CompareTag("Obstacle"))
+            {
+                transform.Rotate(Vector3.right, 180f);
+            }
+        }
+    }
+
+
+
+
 }

@@ -731,12 +731,14 @@ MonoBehaviour:
   lapCounter: 0
   startTime: 0
   currentTime: 0
+  numberOfLaps: 3
   TimeUI: {fileID: 3136645616653841339}
   LapNumber: {fileID: 5457058260387657898}
   HighScore: {fileID: 5457058260666921975}
   LapTimes: {fileID: 5457058260032096090}
   CurrentLap: {fileID: 5457058260627050961}
   levelComplete: {fileID: 0}
+  isRunning: 0
   LevelName: Level-1
 --- !u!1 &8882391914805560782
 GameObject:

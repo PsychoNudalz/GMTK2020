@@ -24,12 +24,14 @@ public class GameManagerScript : MonoBehaviour
     [Header("Level")]
     public TextMeshProUGUI levelNameText;
     public SpriteRenderer startLightRenderer;
+    public GameObject[] AICars;
 
     // Start is called before the first frame update
     void Start()
     {
         levelNameText.text = laptimer.getLevelName();
         timer = maxTimer;
+        AICars = GameObject.FindGameObjectsWithTag("AICar");
         
     }
 
@@ -48,6 +50,7 @@ public class GameManagerScript : MonoBehaviour
             StartCoroutine(hideCountdownTimer(0f));
             carController.isRunning = true;
             laptimer.isRunning = true;
+            setAllAICarRunning(true);
         }
         else if (timerRunning)
         {
@@ -63,6 +66,8 @@ public class GameManagerScript : MonoBehaviour
                 countdownTimer.text = "GO!";
                 carController.isRunning = true;
                 laptimer.isRunning = true;
+                setAllAICarRunning(true);
+
                 laptimer.ResetCurrentTime();
                 StartCoroutine(hideCountdownTimer(1.5f));
                 timerRunning = false;
@@ -80,5 +85,13 @@ public class GameManagerScript : MonoBehaviour
     void updateSpeedUI()
     {
         SpeedUI.text = playerState.getSpeed().ToString("0");
+    }
+
+    void setAllAICarRunning(bool b)
+    {
+        foreach(GameObject AICar in AICars)
+        {
+            AICar.GetComponent<CarController>().isRunning = b;
+        }
     }
 }
