@@ -8,7 +8,7 @@ public class CarController : MonoBehaviour
     [SerializeField] float speed = 60f;
     [SerializeField] float turnSpeed = 5f;
     [SerializeField] float drift = 0.9f;
-
+    public UpdateControlsUI controlUI;
     Dictionary<string, KeyCode> controlsMap = new Dictionary<string, KeyCode>();
     private KeyCode[] keys = { KeyCode.W, KeyCode.A, KeyCode.S, KeyCode.D };
 
@@ -94,6 +94,8 @@ public class CarController : MonoBehaviour
             controlsMap.Add("Left", keys[2]);
             controlsMap.Add("Right", keys[3]);
 
+            controlUI.UpdateControls(controlsMap);
+
         }
     }
     void ResetControls()
@@ -103,5 +105,7 @@ public class CarController : MonoBehaviour
         controlsMap.Add("Backward", KeyCode.S);
         controlsMap.Add("Left", KeyCode.A);
         controlsMap.Add("Right", KeyCode.D);
+
+        controlUI.UpdateControls(controlsMap);
     }
 }
