@@ -6,8 +6,7 @@ using TMPro;
 public class LevelComplete : MonoBehaviour
 {
 
-    public LapTimer lapTimer;
-
+    public GameObject panel;
     public TextMeshProUGUI title;
     public TextMeshProUGUI totalTime;
     public TextMeshProUGUI bestTime;
@@ -17,18 +16,36 @@ public class LevelComplete : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (lapTimer.IsRunning())
+        /*
+        if (!lapTimer.IsRunning())
         {
             DisplayCompleteScreen(lapTimer.GetScoreStringArray(), lapTimer.GetHighScoreString());
         }
+        */
     }
 
-    void DisplayCompleteScreen(string[] scores, string highScore)
+    public void DisplayCompleteScreen(string[] scores, string highScore, bool isHighScore)
     {
-        if (lapTimer.IsHighScore())
+        
+        if (isHighScore)
         {
             title.text = "New Highscore!";
         }
-        totalTime.text = scores[scores.Length];
+        else
+        {
+            title.text = "Level Complete!";
+        }
+        totalTime.text = "Total Time : " + scores[scores.Length-1];
+        string times = "";
+        for (int x = 0; x < (scores.Length - 1); x++)
+        {
+            times += string.Format("Lap {0} : {1}\n", x + 1, scores[x]);
+        }
+        
+        lapTimes.text = times;
+        bestTime.text = "Best Time : " + highScore;
+        print("Active");
+        panel.gameObject.SetActive(true);
+        Time.timeScale = 0f;
     }
 }

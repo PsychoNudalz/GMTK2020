@@ -14,15 +14,13 @@ public class LapTimer : MonoBehaviour
     [SerializeField] private float startTime;
     [SerializeField] private float currentTime;
     private int numberOfLaps = 5;
-    public TextMeshProUGUI TimeUI;
-
-    
-
+    public TextMeshProUGUI TimeUI; 
     public TextMeshProUGUI LapNumber;
     public TextMeshProUGUI HighScore;
     public TextMeshProUGUI LapTimes;
     public TextMeshProUGUI CurrentLap;
-    
+
+    public LevelComplete levelComplete;
 
     private bool isRunnning = true;
     private bool isHighscore = false;
@@ -40,8 +38,8 @@ public class LapTimer : MonoBehaviour
         times = new float[numberOfLaps+1];
         LapNumber.text = ("Lap " + (lapCounter+1));
         HighScore.text = "Best Time : " + FormatTime(PlayerPrefs.GetFloat("Highscore" + LevelName));
-        LapTimes.text = "Lap " + (lapCounter + 1) + " : --:--:--";
-        resetCurrentTime();
+        LapTimes.text = "Lap " + (lapCounter + 1) + " : --:--:---";
+        ResetCurrentTime();
 
     }
 
@@ -51,7 +49,7 @@ public class LapTimer : MonoBehaviour
         if (isRunnning)
         {
             currentTime = Time.time - startTime;
-            updateTimeUI();
+            UpdateTimeUI();
         }
         //test lap complete
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -69,7 +67,7 @@ public class LapTimer : MonoBehaviour
             LapTimes.text = LapTimes.text.Substring(0, LapTimes.text.Length - 9) + string.Format("{0}\nLap {1} : --:--:---", FormatTime(times[lapCounter]), lapCounter + 2);
             lapCounter += 1;
             LapNumber.text = "Lap " + (lapCounter + 1);
-            resetCurrentTime();
+            ResetCurrentTime();
 
             //If is the last lap calculate and display total time check for highscore.
             if(lapCounter == numberOfLaps)
@@ -87,6 +85,7 @@ public class LapTimer : MonoBehaviour
                 LapNumber.text = "FINISHED!";
                 CheckHighScore(totalTime);
                 isRunnning = false;
+                levelComplete.DisplayCompleteScreen(GetScoreStringArray(), GetHighScoreString(),isHighscore);
             }
         }
         
@@ -109,28 +108,18 @@ public class LapTimer : MonoBehaviour
         return string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
     }
 
-    void updateTimeUI()
+    void UpdateTimeUI()
     {
         TimeUI.text = currentTime.ToString("0");
         CurrentLap.text = "Current Lap: " + FormatTime(currentTime);
     }
 
-    void resetCurrentTime()
+    void ResetCurrentTime()
     {
         startTime = Time.time;
     }
 
-    public bool IsRunning()
-    {
-        return isRunnning;
-    }
-
-    public bool IsHighScore()
-    {
-        return isHighscore;
-    }
-
-    public string[] GetScoreStringArray()
+    string[] GetScoreStringArray()
     {
         string[] output = new string[times.Length];
 
@@ -142,7 +131,7 @@ public class LapTimer : MonoBehaviour
         return output;
     }
 
-    public string GetHighScoreString()
+    string GetHighScoreString()
     {
         return FormatTime(PlayerPrefs.GetFloat("Highscore" + LevelName));
     }
