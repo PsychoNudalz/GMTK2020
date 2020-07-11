@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passed: 0
+  willRandom: 1
   particleSystem: {fileID: 1489000183324971754}
   lights:
   - {fileID: 4115563039731486873}

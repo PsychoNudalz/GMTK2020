@@ -795,7 +795,7 @@ MonoBehaviour:
   countdownTimer: {fileID: 153087161}
   laptimer: {fileID: 397150006}
   carController: {fileID: 104646490}
-  useCountdown: 1
+  useCountdown: 0
 --- !u!114 &1169707455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1392,10 +1392,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3366253261072005473, guid: ac2bc10b409e0cd4a899f3395a59b0d8,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7475055539518211937, guid: ac2bc10b409e0cd4a899f3395a59b0d8,
         type: 3}
       propertyPath: immune
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac2bc10b409e0cd4a899f3395a59b0d8, type: 3}
@@ -1646,6 +1651,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3183053613031856598, guid: 936e7b69e7d744a4185b5379c30f6616,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183053613031856598, guid: 936e7b69e7d744a4185b5379c30f6616,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183053613031856598, guid: 936e7b69e7d744a4185b5379c30f6616,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183053613031856598, guid: 936e7b69e7d744a4185b5379c30f6616,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183053613031856598, guid: 936e7b69e7d744a4185b5379c30f6616,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5327898719193055919, guid: 936e7b69e7d744a4185b5379c30f6616,
         type: 3}
       propertyPath: playerCar

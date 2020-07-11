@@ -5,6 +5,7 @@ using UnityEngine;
 public class CheckpointScript : MonoBehaviour
 {
     [SerializeField] private bool passed;
+    public bool willRandom;
     [SerializeField] private ParticleSystem particleSystem;
     [SerializeField] private SpriteRenderer[] lights;
 
@@ -18,7 +19,11 @@ public class CheckpointScript : MonoBehaviour
             setLight();
             particleSystem.Play();
             print("Passed Checkpoint: " + transform.position);
-            collision.gameObject.GetComponent<PlayerState>().randomiseControls();
+            if (willRandom)
+            {
+                collision.gameObject.GetComponent<PlayerState>().randomiseControls();
+
+            }
         }
 
     }

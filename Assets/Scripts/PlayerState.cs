@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerState : MonoBehaviour
 {
@@ -51,6 +52,7 @@ public class PlayerState : MonoBehaviour
             DEAD = true;
         }
         updateMaxSpeed();
+        playDrivingEffect();
     }
 
     public float takeDamage(float damage)
@@ -121,5 +123,19 @@ public class PlayerState : MonoBehaviour
             carController.RandomiseControls();
         }
         carEffecrScript.playJam();
+    }
+
+    void playDrivingEffect()
+    {
+        //print((getSpeed() >= MaxSpeed) + ",  " + getSpeed());
+        if (getSpeed()>= MaxSpeed*1.1f)
+        {
+            carEffecrScript.setDriving(true);
+        }
+        else
+        {
+            carEffecrScript.setDriving(false);
+
+        }
     }
 }

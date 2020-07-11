@@ -7,19 +7,19 @@ public class CarEffecrScript : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField] private ParticleSystem jamEffect;
-    [SerializeField] private ParticleSystem driveEffect;
+    [SerializeField] private ParticleSystem[] driveEffects;
     [SerializeField] private bool driving = false;
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        //playDriveEffect();
+        //print(driving);
     }
 
     public void playJam()
@@ -29,15 +29,39 @@ public class CarEffecrScript : MonoBehaviour
 
     public void playDriveEffect()
     {
-        if (!driveEffect.isPlaying && driving)
+        if (driving)
         {
-            driveEffect.Play();
+
+            foreach (ParticleSystem driveEffect in driveEffects)
+            {
+                if (!driveEffect.isPlaying)
+                {
+                    driveEffect.Play();
+
+                }
+
+                print(driveEffect.isPlaying);
+            }
+        }
+        else if (!driving)
+        {
+            foreach (ParticleSystem driveEffect in driveEffects)
+            {
+                if (driveEffect.isPlaying)
+                {
+
+                driveEffect.Stop();
+                }
+                print(driveEffect.isPlaying);
+
+            }
         }
     }
 
     public void setDriving(bool b)
     {
-        driving = true;
+        driving = b;
+
         playDriveEffect();
     }
 }
