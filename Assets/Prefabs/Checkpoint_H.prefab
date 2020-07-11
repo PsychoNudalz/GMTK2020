@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5137403968210270155}
   - component: {fileID: 6647308937498596556}
   m_Layer: 0
-  m_Name: Checkpoint_Vertical
+  m_Name: Checkpoint_H
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +57,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 60, y: 17}
+  m_Size: {x: 80, y: 17}
   m_EdgeRadius: 0
 --- !u!114 &6647308937498596556
 MonoBehaviour:

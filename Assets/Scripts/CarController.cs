@@ -17,6 +17,8 @@ public class CarController : MonoBehaviour
 
     public Dictionary<string, KeyCode> ControlsMap { get => controlsMap; set => controlsMap = value; }
 
+    public 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -43,13 +45,13 @@ public class CarController : MonoBehaviour
         if (Input.GetKey(ControlsMap["Forward"]))
         {
             //Debug.Log("Forward");
-            car.GetComponent<Rigidbody2D>().AddForce(transform.up * accel*Time.deltaTime*100);
+            car.GetComponent<Rigidbody2D>().AddForce(transform.up * accel*Time.deltaTime*car.mass*100);
         }
 
         if (Input.GetKey(ControlsMap["Backward"]))
         {
             //Debug.Log("Backward");
-            car.GetComponent<Rigidbody2D>().AddForce(transform.up * (accel * -1) * Time.deltaTime * 100);
+            car.GetComponent<Rigidbody2D>().AddForce(transform.up * (accel * -1) * Time.deltaTime*car.mass * 100);
 
 
         }
