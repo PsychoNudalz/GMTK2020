@@ -14,6 +14,10 @@ public class PlayerState : MonoBehaviour
     [SerializeField] private float currentMaxSpeed = 0;
     [SerializeField] private float maxSpeedMod = 1;
     [SerializeField] private bool slowed = false;
+    //[SerializeField] private Dictionary<string, float> speedModDic= new Dictionary<string,float>();
+    [SerializeField] private ArrayList speedModDic = new ArrayList();
+
+
     public bool Slowed { get => slowed; set => slowed = value; }
 
 
@@ -36,6 +40,7 @@ public class PlayerState : MonoBehaviour
         {
             DEAD = true;
         }
+        updateMaxSpeed();
     }
 
     public float takeDamage(float damage)
@@ -72,7 +77,30 @@ public class PlayerState : MonoBehaviour
 
     void updateMaxSpeed()
     {
+        maxSpeedMod = 1;
+        foreach (SpeedModifier mod in speedModDic)
+        {
+            maxSpeedMod = maxSpeedMod * mod.ModifierValue;
+        }
         currentMaxSpeed = MaxSpeed * maxSpeedMod;
+        //print(speedModDic.ToString());
 
+    }
+
+    public void addMaxSpeedMod(SpeedModifier mod)
+    {
+        if (!speedModDic.Contains(mod))
+        {
+            speedModDic.Add(mod);
+        }
+    }
+
+    public void removeMaxSpeedMod(SpeedModifier mod)
+    {
+        
+        if (speedModDic.Contains(mod))
+        {
+            speedModDic.Remove(mod);
+        }
     }
 }
