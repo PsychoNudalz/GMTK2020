@@ -44,7 +44,6 @@ public class LevelComplete : MonoBehaviour
         
         lapTimes.text = times;
         bestTime.text = "Best Time : " + highScore;
-        print("Active");
         panel.gameObject.SetActive(true);
         Time.timeScale = 0f;
     }

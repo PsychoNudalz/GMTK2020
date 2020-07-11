@@ -65,31 +65,36 @@ public class LapTimer : MonoBehaviour
         if (isRunning)
         {
             times[lapCounter] = currentTime;
+            calculateTotalTime();
             LapTimes.text = LapTimes.text.Substring(0, LapTimes.text.Length - 9) + string.Format("{0}\nLap {1} : --:--:---", FormatTime(times[lapCounter]), lapCounter + 2);
             lapCounter += 1;
             LapNumber.text = "Lap " + (lapCounter + 1);
             ResetCurrentTime();
 
             //If is the last lap calculate and display total time check for highscore.
-            if(lapCounter == numberOfLaps)
+            if (lapCounter == numberOfLaps)
             {
-                
-                float totalTime = 0;
-                foreach (float time in times)
-                {
-                    totalTime += time;
-                }
-                times[lapCounter] = totalTime;
+                calculateTotalTime();
                 LapTimes.text = LapTimes.text.Substring(0, LapTimes.text.Length - 17);
                 CurrentLap.text = string.Format("Total Time : {0}", FormatTime(times[lapCounter]));
-                TimeUI.text = string.Format("Total Time\n{0}", FormatTime( times[lapCounter]));
+                TimeUI.text = string.Format("Total Time\n{0}", FormatTime(times[lapCounter]));
                 LapNumber.text = "FINISHED!";
-                CheckHighScore(totalTime);
+                CheckHighScore(times[numberOfLaps]);
                 isRunning = false;
                 levelComplete.DisplayCompleteScreen(GetScoreStringArray(), GetHighScoreString(),isHighscore);
             }
         }
         
+    }
+
+    void calculateTotalTime()
+    {
+        float totalTime = 0;
+        foreach (float time in times)
+        {
+            totalTime += time;
+        }
+        times[numberOfLaps] = totalTime;
     }
 
     void CheckHighScore(float totalTime)
@@ -120,19 +125,27 @@ public class LapTimer : MonoBehaviour
         startTime = Time.time;
     }
 
-    string[] GetScoreStringArray()
+    public string[] GetScoreStringArray()
     {
         string[] output = new string[times.Length];
 
         for (int x = 0; x < times.Length; x++) 
         {
-            output[x] = FormatTime(times[x]);
+            if (times[x] == 0f)
+            {
+                output[x] = "--:--:---";
+            }
+            else
+            {
+                output[x] = FormatTime(times[x]);
+            }
+            
         }
 
         return output;
     }
 
-    string GetHighScoreString()
+    public string GetHighScoreString()
     {
         return FormatTime(PlayerPrefs.GetFloat("Highscore" + LevelName));
     }
