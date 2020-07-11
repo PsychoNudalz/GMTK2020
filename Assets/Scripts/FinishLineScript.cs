@@ -21,17 +21,6 @@ public class FinishLineScript : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     bool checkCheckpoints()
     {
         bool clear = true;

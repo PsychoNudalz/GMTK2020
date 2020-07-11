@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Runtime.InteropServices;
+using System;
+using Unity.Mathematics;
 
 public class LapTimer : MonoBehaviour
 {
@@ -13,6 +15,9 @@ public class LapTimer : MonoBehaviour
     [SerializeField] private float currentTime;
     private int numberOfLaps = 5;
     public TextMeshProUGUI TimeUI;
+
+    
+
     public TextMeshProUGUI LapNumber;
     public TextMeshProUGUI HighScore;
     public TextMeshProUGUI LapTimes;
@@ -20,7 +25,7 @@ public class LapTimer : MonoBehaviour
     
 
     private bool isRunnning = true;
-    private bool highscore = false;
+    private bool isHighscore = false;
     public string LevelName = "Level-1";
 
     private float[] times;
@@ -69,7 +74,7 @@ public class LapTimer : MonoBehaviour
             //If is the last lap calculate and display total time check for highscore.
             if(lapCounter == numberOfLaps)
             {
-                isRunnning = false;
+                
                 float totalTime = 0;
                 foreach (float time in times)
                 {
@@ -81,21 +86,18 @@ public class LapTimer : MonoBehaviour
                 TimeUI.text = string.Format("Total Time\n{0}", FormatTime( times[lapCounter]));
                 LapNumber.text = "FINISHED!";
                 CheckHighScore(totalTime);
+                isRunnning = false;
             }
         }
         
     }
 
-    bool CheckHighScore(float totalTime)
+    void CheckHighScore(float totalTime)
     {
         if (totalTime < PlayerPrefs.GetFloat("Highscore" + LevelName))
         {
             PlayerPrefs.SetFloat("Highscore" + LevelName, totalTime);
-            return true;
-        }
-        else
-        {
-            return false;
+            isHighscore = true;
         }
     }
 
@@ -116,5 +118,32 @@ public class LapTimer : MonoBehaviour
     void resetCurrentTime()
     {
         startTime = Time.time;
+    }
+
+    public bool IsRunning()
+    {
+        return isRunnning;
+    }
+
+    public bool IsHighScore()
+    {
+        return isHighscore;
+    }
+
+    public string[] GetScoreStringArray()
+    {
+        string[] output = new string[times.Length];
+
+        for (int x = 0; x < times.Length; x++) 
+        {
+            output[x] = FormatTime(times[x]);
+        }
+
+        return output;
+    }
+
+    public string GetHighScoreString()
+    {
+        return FormatTime(PlayerPrefs.GetFloat("Highscore" + LevelName));
     }
 }
