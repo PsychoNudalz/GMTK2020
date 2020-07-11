@@ -14,6 +14,7 @@ public class GameManagerScript : MonoBehaviour
     public TextMeshProUGUI countdownTimer;
     public LapTimer laptimer;
     public CarController carController;
+    public TextMeshProUGUI levelNameText;
 
     private float maxTimer = 5f;
     private float timer;
@@ -23,7 +24,7 @@ public class GameManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        levelNameText.text = laptimer.getLevelName();
         timer = maxTimer;
         
     }

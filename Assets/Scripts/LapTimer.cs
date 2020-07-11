@@ -136,4 +136,9 @@ public class LapTimer : MonoBehaviour
     {
         return FormatTime(PlayerPrefs.GetFloat("Highscore" + LevelName));
     }
+
+    public string getLevelName()
+    {
+        return LevelName;
+    }
 }
