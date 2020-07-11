@@ -17,13 +17,13 @@ public class CarController : MonoBehaviour
 
     public Dictionary<string, KeyCode> ControlsMap { get => controlsMap; set => controlsMap = value; }
 
-    public 
+    public bool isRunning = false;
     
     // Start is called before the first frame update
     void Start()
     {
 
-
+        isRunning = false;
         ResetControls();
 
     }
@@ -31,48 +31,52 @@ public class CarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //randomise controls on space
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (isRunning)
         {
-            RandomiseControls();
-        }
+            //randomise controls on space
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                RandomiseControls();
+            }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ResetControls();
-        }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                ResetControls();
+            }
 
-        if (Input.GetKey(ControlsMap["Forward"]))
-        {
-            //Debug.Log("Forward");
-            car.GetComponent<Rigidbody2D>().AddForce(transform.up * accel*Time.deltaTime*car.mass*100);
-        }
+            if (Input.GetKey(ControlsMap["Forward"]))
+            {
+                //Debug.Log("Forward");
+                car.GetComponent<Rigidbody2D>().AddForce(transform.up * accel * Time.deltaTime * car.mass * 100);
+            }
 
-        if (Input.GetKey(ControlsMap["Backward"]))
-        {
-            //Debug.Log("Backward");
-            car.GetComponent<Rigidbody2D>().AddForce(transform.up * (accel * -1) * Time.deltaTime*car.mass * 100);
+            if (Input.GetKey(ControlsMap["Backward"]))
+            {
+                //Debug.Log("Backward");
+                car.GetComponent<Rigidbody2D>().AddForce(transform.up * (accel * -1) * Time.deltaTime * car.mass * 100);
 
 
-        }
+            }
 
-        if (Input.GetKey(ControlsMap["Left"]))
-        {
-            //Debug.Log("Left");
-            car.angularVelocity = 1 * turnSpeed;
-        }
+            if (Input.GetKey(ControlsMap["Left"]))
+            {
+                //Debug.Log("Left");
+                car.angularVelocity = 1 * turnSpeed;
+            }
 
-        if (Input.GetKey(ControlsMap["Right"]))
-        {
-            //Debug.Log("Right");
-            car.angularVelocity = -1 * turnSpeed;
-        }
-        car.velocity = ForwardVelocity() + SidewaysVelocity() * drift;
-        if (car.velocity.magnitude > playerState.getCurrentMaxSpeed())
-        {
-            car.velocity = car.velocity.normalized * playerState.getCurrentMaxSpeed();
+            if (Input.GetKey(ControlsMap["Right"]))
+            {
+                //Debug.Log("Right");
+                car.angularVelocity = -1 * turnSpeed;
+            }
+            car.velocity = ForwardVelocity() + SidewaysVelocity() * drift;
+            if (car.velocity.magnitude > playerState.getCurrentMaxSpeed())
+            {
+                car.velocity = car.velocity.normalized * playerState.getCurrentMaxSpeed();
+            }
         }
     }
+ 
 
 
 

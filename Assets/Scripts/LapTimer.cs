@@ -22,7 +22,7 @@ public class LapTimer : MonoBehaviour
 
     public LevelComplete levelComplete;
 
-    private bool isRunnning = true;
+    public bool isRunning = false;
     private bool isHighscore = false;
     public string LevelName = "Level-1";
 
@@ -39,6 +39,7 @@ public class LapTimer : MonoBehaviour
         LapNumber.text = ("Lap " + (lapCounter+1));
         HighScore.text = "Best Time : " + FormatTime(PlayerPrefs.GetFloat("Highscore" + LevelName));
         LapTimes.text = "Lap " + (lapCounter + 1) + " : --:--:---";
+        isRunning = false;
         ResetCurrentTime();
 
     }
@@ -46,7 +47,7 @@ public class LapTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isRunnning)
+        if (isRunning)
         {
             currentTime = Time.time - startTime;
             UpdateTimeUI();
@@ -61,7 +62,7 @@ public class LapTimer : MonoBehaviour
 
     public void CompleteLap()
     {
-        if (isRunnning)
+        if (isRunning)
         {
             times[lapCounter] = currentTime;
             LapTimes.text = LapTimes.text.Substring(0, LapTimes.text.Length - 9) + string.Format("{0}\nLap {1} : --:--:---", FormatTime(times[lapCounter]), lapCounter + 2);
@@ -84,7 +85,7 @@ public class LapTimer : MonoBehaviour
                 TimeUI.text = string.Format("Total Time\n{0}", FormatTime( times[lapCounter]));
                 LapNumber.text = "FINISHED!";
                 CheckHighScore(totalTime);
-                isRunnning = false;
+                isRunning = false;
                 levelComplete.DisplayCompleteScreen(GetScoreStringArray(), GetHighScoreString(),isHighscore);
             }
         }
@@ -114,7 +115,7 @@ public class LapTimer : MonoBehaviour
         CurrentLap.text = "Current Lap: " + FormatTime(currentTime);
     }
 
-    void ResetCurrentTime()
+    public void ResetCurrentTime()
     {
         startTime = Time.time;
     }
