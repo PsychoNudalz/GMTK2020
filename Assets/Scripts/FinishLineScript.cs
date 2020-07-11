@@ -6,17 +6,18 @@ public class FinishLineScript : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    [SerializeField] int lapCounter = 0;
+    
     public CheckpointScript[] checkpoints;
+    public LapTimer lapTimer;
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (checkCheckpoints())
         {
-            lapCounter += 1;
-            print(lapCounter);
+            lapTimer.CompleteLap();
             clearCheckpoints();
+            
         }
     }
 

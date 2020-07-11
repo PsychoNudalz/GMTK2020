@@ -41,13 +41,13 @@ public class CarController : MonoBehaviour
 
         if (Input.GetKey(controlsMap["Forward"]))
         {
-            Debug.Log("Forward");
+            //Debug.Log("Forward");
             car.GetComponent<Rigidbody2D>().AddForce(transform.up * speed);
         }
 
         if (Input.GetKey(controlsMap["Backward"]))
         {
-            Debug.Log("Backward");
+            //Debug.Log("Backward");
             car.GetComponent<Rigidbody2D>().AddForce(transform.up * (speed * -1));
 
 
@@ -55,13 +55,13 @@ public class CarController : MonoBehaviour
 
         if (Input.GetKey(controlsMap["Left"]))
         {
-            Debug.Log("Left");
+            //Debug.Log("Left");
             car.angularVelocity = 1 * turnSpeed;
         }
 
         if (Input.GetKey(controlsMap["Right"]))
         {
-            Debug.Log("Right");
+            //Debug.Log("Right");
             car.angularVelocity = -1 * turnSpeed;
         }
 
