@@ -7,6 +7,7 @@ TagManager:
   - Obstacle
   - AICar
   - Checkpoint
+  - MenuMusic
   layers:
   - Default
   - TransparentFX
