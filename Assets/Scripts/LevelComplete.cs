@@ -12,7 +12,7 @@ public class LevelComplete : MonoBehaviour
     public GameObject panel;
     public string lastLevel = "Level3";
     public Button nextButton;
-
+    public PlayerState player;
     public TextMeshProUGUI title;
     public TextMeshProUGUI totalTime;
     public TextMeshProUGUI bestTime;
@@ -27,7 +27,7 @@ public class LevelComplete : MonoBehaviour
 
     public void DisplayCompleteScreen(string[] scores, string highScore, bool isHighScore)
     {
-        
+        player.stopSounds();
         if (isHighScore)
         {
             title.text = "New Highscore!";
@@ -46,6 +46,7 @@ public class LevelComplete : MonoBehaviour
         lapTimes.text = times;
         bestTime.text = "Best Time : " + highScore;
         panel.gameObject.SetActive(true);
+        
         Time.timeScale = 0f;
 
         

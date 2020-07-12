@@ -167,4 +167,11 @@ public class PlayerState : MonoBehaviour
 
         }
     }
+    public void stopSounds()
+    {
+        print("Stoppped");
+        backgroundRevs.Stop();
+        revving.Stop();
+    }
+    
 }
