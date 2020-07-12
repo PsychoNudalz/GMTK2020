@@ -7,6 +7,7 @@ public class CarController : MonoBehaviour
 {
     public PlayerState playerState;
     public Rigidbody2D car;
+   
     [SerializeField] float currentSpeed;
     [SerializeField] float accel = 60f;
     [SerializeField] float turnSpeed = 5f;
@@ -51,8 +52,10 @@ public class CarController : MonoBehaviour
 
             if (Input.GetKey(ControlsMap["Forward"]))
             {
-                //Debug.Log("Forward");
+
                 car.GetComponent<Rigidbody2D>().AddForce(transform.up * accel * Time.deltaTime * car.mass * 100);
+                //Debug.Log("Forward");
+               
             }
 
             if (Input.GetKey(ControlsMap["Backward"]))
@@ -103,6 +106,7 @@ public class CarController : MonoBehaviour
 
     public void RandomiseControls()
     {
+        
         //shuffle array
         for (int x = 0; x < keys.Length; x++)
         {
@@ -117,7 +121,7 @@ public class CarController : MonoBehaviour
         ControlsMap.Add("Backward", keys[1]);
         ControlsMap.Add("Left", keys[2]);
         ControlsMap.Add("Right", keys[3]);
-
+        
 
     }
 
@@ -128,8 +132,8 @@ public class CarController : MonoBehaviour
         ControlsMap.Add("Backward", KeyCode.S);
         ControlsMap.Add("Left", KeyCode.A);
         ControlsMap.Add("Right", KeyCode.D);
-
-    }
+       
+        }
 
     void AIControl()
     {
