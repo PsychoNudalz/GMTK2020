@@ -151,7 +151,8 @@ public class CarController : MonoBehaviour
         {
             if (collision.collider.CompareTag("Obstacle"))
             {
-                transform.Rotate(Vector3.right, 180f);
+                car.angularVelocity = 10 * turnSpeed;
+                //transform.Rotate(Vector3.right, 180f);
             }
         }
     }

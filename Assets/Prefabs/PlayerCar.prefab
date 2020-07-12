@@ -9720,7 +9720,7 @@ MonoBehaviour:
   MaxHealth: 100
   currentHealth: 0
   DEAD: 0
-  MaxSpeed: 60
+  MaxSpeed: 50
   currentMaxSpeed: 0
   maxSpeedMod: 1
   slowed: 0

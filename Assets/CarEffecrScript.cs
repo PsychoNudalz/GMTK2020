@@ -40,7 +40,6 @@ public class CarEffecrScript : MonoBehaviour
 
                 }
 
-                print(driveEffect.isPlaying);
             }
         }
         else if (!driving)

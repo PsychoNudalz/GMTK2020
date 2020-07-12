@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6647308937498596556}
   m_Layer: 0
   m_Name: Checkpoint_H
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passed: 0
+  willRandom: 1
   particleSystem: {fileID: 682126404193935079}
   lights:
   - {fileID: 2649226370942196884}
