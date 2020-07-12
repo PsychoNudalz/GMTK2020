@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System;
 
 public class LevelComplete : MonoBehaviour
 {
@@ -21,12 +22,7 @@ public class LevelComplete : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (!lapTimer.IsRunning())
-        {
-            DisplayCompleteScreen(lapTimer.GetScoreStringArray(), lapTimer.GetHighScoreString());
-        }
-        */
+        
     }
 
     public void DisplayCompleteScreen(string[] scores, string highScore, bool isHighScore)
@@ -52,10 +48,32 @@ public class LevelComplete : MonoBehaviour
         panel.gameObject.SetActive(true);
         Time.timeScale = 0f;
 
+        
+
+        
         if (SceneManager.GetActiveScene().name.Equals(lastLevel))
         {
             nextButton.gameObject.SetActive(false);
-            
         }
+        
+
+    }
+
+    public void nextLevel()
+    {
+        
+        SceneManager.LoadScene(getNextLevelString());
+        Time.timeScale = 1f;
+       
+    }
+
+    string getNextLevelString()
+    {
+        string currentLevelString = SceneManager.GetActiveScene().name;
+        int nextLevelInt = int.Parse(currentLevelString.Substring(currentLevelString.Length - 1));
+        nextLevelInt++;
+        print("Level" + nextLevelInt);
+        return "Level" + nextLevelInt;
+        
     }
 }

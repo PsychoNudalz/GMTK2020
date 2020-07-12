@@ -121,7 +121,7 @@ public class CarController : MonoBehaviour
 
     }
 
-    void ResetControls()
+    public void ResetControls()
     {
         ControlsMap = new Dictionary<string, KeyCode>();
         ControlsMap.Add("Forward", KeyCode.W);

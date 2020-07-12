@@ -25,15 +25,6 @@ public class MenuScript : MonoBehaviour
         Application.Quit();
     }
 
-    public void nextLevel()
-    {
-        string currentLevelString = SceneManager.GetActiveScene().name;
-        int nextLevelInt = int.Parse(currentLevelString.Substring(currentLevelString.Length - 1));
-        nextLevelInt++;
-        string nextlevelString = "Level" + nextLevelInt;
-        //print(nextlevelString);
-        SceneManager.LoadScene(nextlevelString);
-        Time.timeScale = 1f;
-    }
+    
 
 }
