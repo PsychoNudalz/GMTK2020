@@ -8,6 +8,7 @@ TagManager:
   - AICar
   - Checkpoint
   - MenuMusic
+  - ControlUI
   layers:
   - Default
   - TransparentFX
