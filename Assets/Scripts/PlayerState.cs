@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -20,7 +21,9 @@ public class PlayerState : MonoBehaviour
     //[SerializeField] private Dictionary<string, float> speedModDic= new Dictionary<string,float>();
     [SerializeField] private ArrayList speedModDic = new ArrayList();
 
-
+    [Header("Sounds")]
+    public AudioSource revving;
+    public AudioSource backgroundRevs;
 
     [Header("Other")]
     public bool immune = true;
@@ -53,6 +56,32 @@ public class PlayerState : MonoBehaviour
         }
         updateMaxSpeed();
         playDrivingEffect();
+
+        SetRevSound();
+
+    }
+
+    private void SetRevSound()
+    {
+        float curSpeed = getSpeed();
+        if(curSpeed < 10)
+        {
+            if (!backgroundRevs.isPlaying)
+            {
+                backgroundRevs.Play();
+                revving.Stop();
+            }
+        }
+        else
+        {
+            if (!revving.isPlaying)
+            {
+                backgroundRevs.Stop();
+                revving.Play();
+            }
+        }
+
+        revving.volume = (curSpeed / 100) + 0.2f ;
     }
 
     public float takeDamage(float damage)
