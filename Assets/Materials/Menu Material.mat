@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: JamElectric
-  m_Shader: {fileID: -6465566751694194690, guid: e22f6c59f70f473478284457daeabb26,
+  m_Name: Menu Material
+  m_Shader: {fileID: -6465566751694194690, guid: fcd5781202a398b42bbc0ec3b6b38fb5,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -25,7 +25,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: bfce08dde0d8b144eb26ea3eb6757679, type: 3}
+        m_Texture: {fileID: 2800000, guid: e0bf46d4b59b5e34188178cb5d7b77f1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
@@ -37,8 +37,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_54EC3DA6: 0.2
+    - Vector1_92032309: 0.3
     - _EnableExternalAlpha: 0
     m_Colors:
+    - Vector2_3E402EBC: {r: 192, g: 108, b: 0, a: 0}
+    - Vector2_FBA2C5FF: {r: 1, g: -1, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
