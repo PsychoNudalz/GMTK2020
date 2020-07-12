@@ -7,8 +7,8 @@ public class PauseMenu : MonoBehaviour
 {
     
     public GameObject pauseMenu;
+    public Camera camera;
     public LapTimer lapTimer;
-    public PlayerState player;
     public TextMeshProUGUI totalTimeText;
     public TextMeshProUGUI timesText;
     public TextMeshProUGUI bestTimeText;
@@ -28,7 +28,7 @@ public class PauseMenu : MonoBehaviour
 
         if (pauseMenu.activeSelf)
         {
-            player.stopSounds();
+            
             string[] times = lapTimer.GetScoreStringArray();
 
             string timesString = "";
@@ -40,11 +40,12 @@ public class PauseMenu : MonoBehaviour
             totalTimeText.text = "Total Time : " + times[times.Length - 1];
             timesText.text = timesString;
             bestTimeText.text = "Best Time : " + lapTimer.GetHighScoreString();
-            
+            camera.GetComponent<AudioListener>().enabled = false;
             Time.timeScale = 0f;
         }
         else
         {
+            camera.GetComponent<AudioListener>().enabled = true;
             Time.timeScale = 1f;
         }
     }

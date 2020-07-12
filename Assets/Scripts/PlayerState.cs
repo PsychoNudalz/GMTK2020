@@ -166,12 +166,5 @@ public class PlayerState : MonoBehaviour
             carEffecrScript.setDriving(false);
 
         }
-    }
-    public void stopSounds()
-    {
-        print("Stoppped");
-        backgroundRevs.Stop();
-        revving.Stop();
-    }
-    
+    }  
 }

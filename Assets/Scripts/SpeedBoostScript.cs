@@ -6,6 +6,7 @@ public class SpeedBoostScript : MonoBehaviour
 {
     public CarController player;
     public GameObject icon;
+    public AudioSource pickup;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,6 +15,7 @@ public class SpeedBoostScript : MonoBehaviour
             player = collision.GetComponent<CarController>();
             print("Boosted!");
             StartCoroutine(increaseSpeed());
+            pickup.Play();
             icon.SetActive(false);
         }
     }

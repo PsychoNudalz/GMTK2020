@@ -10,6 +10,7 @@ public class LevelComplete : MonoBehaviour
 {
 
     public GameObject panel;
+    public Camera camera;
     public string lastLevel = "Level3";
     public Button nextButton;
     public PlayerState player;
@@ -27,7 +28,7 @@ public class LevelComplete : MonoBehaviour
 
     public void DisplayCompleteScreen(string[] scores, string highScore, bool isHighScore)
     {
-        player.stopSounds();
+        camera.GetComponent<AudioListener>().enabled = false;
         if (isHighScore)
         {
             title.text = "New Highscore!";
