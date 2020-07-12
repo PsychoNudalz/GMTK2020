@@ -166,5 +166,5 @@ public class PlayerState : MonoBehaviour
             carEffecrScript.setDriving(false);
 
         }
-    }
+    }  
 }
