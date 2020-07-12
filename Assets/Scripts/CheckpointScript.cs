@@ -1,15 +1,32 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CheckpointScript : MonoBehaviour
 {
+    [Header("Logic")]
     [SerializeField] private bool passed;
+    public bool Passed { get => passed; }
+    public Transform pointTo;
     public bool willRandom;
+    [Header("Effects")]
     [SerializeField] private ParticleSystem particleSystem;
     [SerializeField] private SpriteRenderer[] lights;
+    [Header("Power ups")]
+    public bool spawnPowerUp = true;
+    public GameObject[] powerupList;
+    [SerializeField] private Transform[] spawnLocations;
 
-    public bool Passed { get => passed; }
+
+    private void Awake()
+    {
+        if (spawnPowerUp)
+        {
+            spawnPowerups();
+
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -28,17 +45,6 @@ public class CheckpointScript : MonoBehaviour
 
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
 
     public void resetCheckpoint()
@@ -62,6 +68,24 @@ public class CheckpointScript : MonoBehaviour
                 r.material.SetFloat("_ShiftValue", -0.1f);
 
             }
+        }
+    }
+
+    public Vector3 getPoint()
+    {
+        return pointTo.position;
+    }
+
+
+    void spawnPowerups()
+    {
+        GameObject temp;
+        GameObject tempPowerUp;
+
+        foreach (Transform t in spawnLocations)
+        {
+            temp = powerupList[(int)Math.Floor(UnityEngine.Random.Range(0, powerupList.Length - 0.001f))];
+            tempPowerUp = Instantiate(temp, t.position, Quaternion.identity, gameObject.transform);
         }
     }
 }

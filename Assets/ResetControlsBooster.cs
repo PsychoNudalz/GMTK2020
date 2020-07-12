@@ -11,6 +11,7 @@ public class ResetControlsBooster : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            player = collision.GetComponent<CarController>();
             player.ResetControls();
             Destroy(gameObject);
         }

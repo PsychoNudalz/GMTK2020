@@ -11,6 +11,7 @@ public class SpeedBoostScript : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            player = collision.GetComponent<CarController>();
             print("Boosted!");
             StartCoroutine(increaseSpeed());
             icon.SetActive(false);

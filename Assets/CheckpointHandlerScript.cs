@@ -38,7 +38,7 @@ public class CheckpointHandlerScript : MonoBehaviour
         {
             if (!c.Passed)
             {
-                return c.transform.position;
+                return c.getPoint();
             }
         }
 

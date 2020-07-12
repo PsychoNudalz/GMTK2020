@@ -2997,7 +2997,7 @@ Transform:
   m_LocalScale: {x: 53597.016, y: 62013.965, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1305462245 stripped
 Transform:
@@ -5147,21 +5147,16 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4649597920900156804, guid: 936e7b69e7d744a4185b5379c30f6616,
+        type: 3}
+      propertyPath: numberOfLaps
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5327898719193055919, guid: 936e7b69e7d744a4185b5379c30f6616,
         type: 3}
       propertyPath: playerCar
       value: 
       objectReference: {fileID: 104646490}
-    - target: {fileID: 6330518723552579810, guid: 936e7b69e7d744a4185b5379c30f6616,
-        type: 3}
-      propertyPath: PlayerCar
-      value: 
-      objectReference: {fileID: 1802191901}
-    - target: {fileID: 7458323328879059544, guid: 936e7b69e7d744a4185b5379c30f6616,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6108202286236242062, guid: 936e7b69e7d744a4185b5379c30f6616,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -5185,6 +5180,16 @@ PrefabInstance:
     - target: {fileID: 6108202286236242062, guid: 936e7b69e7d744a4185b5379c30f6616,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6330518723552579810, guid: 936e7b69e7d744a4185b5379c30f6616,
+        type: 3}
+      propertyPath: PlayerCar
+      value: 
+      objectReference: {fileID: 1802191901}
+    - target: {fileID: 7458323328879059544, guid: 936e7b69e7d744a4185b5379c30f6616,
+        type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8255627416035885187, guid: 936e7b69e7d744a4185b5379c30f6616,

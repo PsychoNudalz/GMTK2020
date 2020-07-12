@@ -9740,9 +9740,9 @@ MonoBehaviour:
   playerState: {fileID: 7475055539518211937}
   car: {fileID: 1802191899}
   currentSpeed: 0
-  accel: 40
+  accel: 25
   turnSpeed: 80
-  drift: 0.2
+  drift: 0.02
   isRunning: 0
   AI: 0
   randomShiftTime: 5
