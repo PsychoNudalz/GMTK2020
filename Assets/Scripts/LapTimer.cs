@@ -53,11 +53,13 @@ public class LapTimer : MonoBehaviour
             UpdateTimeUI();
         }
         //test lap complete
+        /*
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             print("Test Lap");
             CompleteLap();
         }
+        */
     }
 
     public void CompleteLap()

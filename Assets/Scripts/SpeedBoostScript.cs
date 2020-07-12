@@ -14,7 +14,7 @@ public class SpeedBoostScript : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             player = collision.GetComponent<PlayerState>();
-            print(player);
+            //print(player);
             speedModifier.setPlayerState(player);
             print("Boosted!");
             StartCoroutine(increaseSpeed());
@@ -28,7 +28,7 @@ public class SpeedBoostScript : MonoBehaviour
         /*
         */
         float currentAccel = player.carController.getAccel();
-        player.carController.setAccel(currentAccel * 2.5f);
+        player.carController.setAccel(currentAccel * 2f);
         print("reset to " + currentAccel);
 
         speedModifier.addSpeed();

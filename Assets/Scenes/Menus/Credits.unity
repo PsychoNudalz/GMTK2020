@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -253,7 +253,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\n<B>Designed and programmed by</B>\n\nAnson Wong\nDaniel Newsom\n\nfor
-    the GMTK Game Jam 2020\n\n<B>Music & Sound Credits</B>\n\nengine-loop-1-normalized.wav\r\nhttps://opengameart.org/content/car-engine-loop-96khz-4s\r\nAuthor:
+    the GMTK Game Jam 2020\n\n<B>Font & Music & Sound Credits</B>\n\nbulkypixels
+    Font\nJohn Bloor\n\nengine-loop-1-normalized.wav\r\nhttps://opengameart.org/content/car-engine-loop-96khz-4s\r\nAuthor:
     qubodup\n\nengine-loop-1-normalized.wav\r\nhttps://opengameart.org/content/car-engine-loop-96khz-4s\r\nAuthor:
     qubodup\n\n\n270337__littlerobotsoundfactory__pickup-00.wav\r\nhttps://freesound.org/people/LittleRobotSoundFactory/sounds/270337/\n\n270342__littlerobotsoundfactory__pickup-03.wav\r\nhttps://freesound.org/people/LittleRobotSoundFactory/sounds/270342/
     \r\n\r\n270341__littlerobotsoundfactory__pickup-04.wav\r\nhttps://freesound.org/people/LittleRobotSoundFactory/sounds/270341/\n\n270325__littlerobotsoundfactory__hit-02.wav\r\nhttps://freesound.org/people/LittleRobotSoundFactory/sounds/270325/\n\n\n270327__littlerobotsoundfactory__hit-00.wav\r\nhttps://freesound.org/people/LittleRobotSoundFactory/sounds/270327/\n\n270315__littlerobotsoundfactory__menu-navigate-03.wav\r\nhttps://freesound.org/people/LittleRobotSoundFactory/sounds/270315/\n\n270302__littlerobotsoundfactory__collect-point-02.wav\r\nhttps://freesound.org/people/LittleRobotSoundFactory/sounds/270302/\n"
@@ -325,12 +326,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 350493573}
-    characterCount: 1147
+    characterCount: 1183
     spriteCount: 0
-    spaceCount: 56
-    wordCount: 113
+    spaceCount: 63
+    wordCount: 118
     linkCount: 0
-    lineCount: 40
+    lineCount: 43
     pageCount: 1
     materialCount: 2
   m_isUsingLegacyAnimationComponent: 0
@@ -960,7 +961,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 3
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -989,7 +990,7 @@ MonoBehaviour:
     spaceCount: 0
     wordCount: 1
     linkCount: 0
-    lineCount: 1
+    lineCount: 3
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -1278,7 +1279,7 @@ MonoBehaviour:
     spaceCount: 1
     wordCount: 1
     linkCount: 0
-    lineCount: 1
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0

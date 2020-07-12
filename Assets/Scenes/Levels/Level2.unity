@@ -2158,6 +2158,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerUps
       objectReference: {fileID: 0}
+    - target: {fileID: 5083095609922496042, guid: e1519e798b32a274b91673e42836ff46,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5083095609922496043, guid: e1519e798b32a274b91673e42836ff46,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5207,11 +5212,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2033973289751963261, guid: 936e7b69e7d744a4185b5379c30f6616,
-        type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 139460108}
     - target: {fileID: 2855586897957598878, guid: 936e7b69e7d744a4185b5379c30f6616,
         type: 3}
       propertyPath: m_AnchorMin.y

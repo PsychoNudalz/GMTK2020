@@ -40,15 +40,19 @@ public class CarController : MonoBehaviour
         if (isRunning)
         {
             //randomise controls on space
+            /*
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 RandomiseControls();
             }
 
+
             if (Input.GetKeyDown(KeyCode.R))
             {
                 ResetControls();
             }
+            */
+
 
             if (Input.GetKey(ControlsMap["Forward"]))
             {
