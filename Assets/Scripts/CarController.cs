@@ -158,6 +158,14 @@ public class CarController : MonoBehaviour
     }
 
 
+    public float getAccel()
+    {
+        return accel;
+    }
 
+    public void setAccel(float newAccel)
+    {
+        accel = newAccel;
+    }
 
 }

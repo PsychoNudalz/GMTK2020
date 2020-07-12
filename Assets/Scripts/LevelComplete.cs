@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelComplete : MonoBehaviour
 {
 
     public GameObject panel;
+    public string lastLevel = "Level3";
+    public Button nextButton;
+
     public TextMeshProUGUI title;
     public TextMeshProUGUI totalTime;
     public TextMeshProUGUI bestTime;
@@ -46,5 +51,11 @@ public class LevelComplete : MonoBehaviour
         bestTime.text = "Best Time : " + highScore;
         panel.gameObject.SetActive(true);
         Time.timeScale = 0f;
+
+        if (SceneManager.GetActiveScene().name.Equals(lastLevel))
+        {
+            nextButton.gameObject.SetActive(false);
+            
+        }
     }
 }

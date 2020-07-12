@@ -22,7 +22,7 @@ public class WindowQuestPonter : MonoBehaviour
         pointerRectransform.localEulerAngles = new Vector3(0, 0, Vector2.SignedAngle(Vector2.up, dir));
         //pointerRectransform.forward = dir;
         
-        print(pointerRectransform.localEulerAngles);
+        //print(pointerRectransform.localEulerAngles);
     }
 
     public void setTarget(Vector3 t) 

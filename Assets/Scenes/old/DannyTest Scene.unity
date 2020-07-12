@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -791,11 +791,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerState: {fileID: 2521837762082049489}
+  carController: {fileID: 104646490}
   SpeedUI: {fileID: 1084476937}
   countdownTimer: {fileID: 153087161}
   laptimer: {fileID: 397150006}
-  carController: {fileID: 104646490}
   useCountdown: 1
+  levelNameText: {fileID: 0}
+  startLightRenderer: {fileID: 0}
+  AICars: []
 --- !u!114 &1169707455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -811,6 +814,7 @@ MonoBehaviour:
   lapCounter: 0
   startTime: 0
   currentTime: 0
+  numberOfLaps: 5
   TimeUI: {fileID: 0}
   LapNumber: {fileID: 0}
   HighScore: {fileID: 0}

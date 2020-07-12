@@ -24,7 +24,7 @@ public class LapTimer : MonoBehaviour
 
     public bool isRunning = false;
     private bool isHighscore = false;
-    public string LevelName = "Level-1";
+    public string LevelName = "Level";
 
     private float[] times;
 
@@ -90,9 +90,9 @@ public class LapTimer : MonoBehaviour
     void calculateTotalTime()
     {
         float totalTime = 0;
-        foreach (float time in times)
+        for(int x =0; x<times.Length-1;x++)
         {
-            totalTime += time;
+            totalTime += times[x];
         }
         times[numberOfLaps] = totalTime;
     }
