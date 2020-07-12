@@ -174,8 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05799378beae2424c99998e5474bc4f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerState: {fileID: 7475055539518211937, guid: ac2bc10b409e0cd4a899f3395a59b0d8,
-    type: 3}
+  playerState: {fileID: 0}
   carController: {fileID: 0}
   SpeedUI: {fileID: 0}
   countdownTimer: {fileID: 0}

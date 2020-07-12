@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -4402,17 +4402,17 @@ PrefabInstance:
     - target: {fileID: 1835714979249566421, guid: 360d1e580427a1d42a9aeb9cb8b397da,
         type: 3}
       propertyPath: m_Points.Array.data[13].y
-      value: 102.801575
+      value: 106.997375
       objectReference: {fileID: 0}
     - target: {fileID: 1835714979249566421, guid: 360d1e580427a1d42a9aeb9cb8b397da,
         type: 3}
       propertyPath: m_Points.Array.data[13].x
-      value: -113.76514
+      value: -100.20947
       objectReference: {fileID: 0}
     - target: {fileID: 1835714979249566421, guid: 360d1e580427a1d42a9aeb9cb8b397da,
         type: 3}
       propertyPath: m_EdgeRadius
-      value: 17.5
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1835714979249566421, guid: 360d1e580427a1d42a9aeb9cb8b397da,
         type: 3}
@@ -5427,6 +5427,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8685115315880573030, guid: 936e7b69e7d744a4185b5379c30f6616,
+        type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 139460108}
     - target: {fileID: 9123656044105471531, guid: 936e7b69e7d744a4185b5379c30f6616,
         type: 3}
       propertyPath: m_AnchorMin.y
