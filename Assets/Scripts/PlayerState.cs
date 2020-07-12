@@ -64,7 +64,7 @@ public class PlayerState : MonoBehaviour
     private void SetRevSound()
     {
         float curSpeed = getSpeed();
-        if(curSpeed < 5)
+        if(curSpeed < 10)
         {
             if (!backgroundRevs.isPlaying)
             {

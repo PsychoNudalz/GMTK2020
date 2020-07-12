@@ -18,8 +18,11 @@ public class GameManagerScript : MonoBehaviour
     public LapTimer laptimer;
     private float maxTimer = 5f;
     private float timer;
+    private float timerSound;
     private bool timerRunning = true;
     [SerializeField] bool useCountdown = true;
+    public AudioSource countdownBeep;
+    public AudioSource goBeep;
 
     [Header("Level")]
     public TextMeshProUGUI levelNameText;
@@ -31,6 +34,7 @@ public class GameManagerScript : MonoBehaviour
     {
         levelNameText.text = laptimer.getLevelName();
         timer = maxTimer;
+        timerSound = (int)maxTimer;
         AICars = GameObject.FindGameObjectsWithTag("AICar");
         
     }
@@ -63,6 +67,7 @@ public class GameManagerScript : MonoBehaviour
             }
             if (timer < 0.5f)
             {
+                goBeep.Play();
                 countdownTimer.text = "GO!";
                 carController.isRunning = true;
                 laptimer.isRunning = true;
@@ -72,6 +77,14 @@ public class GameManagerScript : MonoBehaviour
                 StartCoroutine(hideCountdownTimer(1.5f));
                 timerRunning = false;
             }
+
+            if (countdownTimer.text.Equals(timerSound.ToString("0")))
+            {
+                countdownBeep.Play();
+                //print(timerSound.ToString("0") + " : " + countdownTimer.text);
+                timerSound--;
+            }
+           
         }
     }
 
