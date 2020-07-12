@@ -142,9 +142,11 @@ MonoBehaviour:
   lights:
   - {fileID: 4115563039731486873}
   - {fileID: 1015043167328466817}
+  spawnPowerUp: 1
   powerupList:
   - {fileID: 1981353197758299230, guid: 97dff143d6d7af94296c96c45782c209, type: 3}
   - {fileID: 6680249857607829477, guid: 63a74b8ee8726b848b0ed770cd8d3be2, type: 3}
+  - {fileID: 6680249857607829477, guid: 80bb9354c71cfa946b44b2696bdcfb28, type: 3}
   spawnLocations:
   - {fileID: 915586581440399437}
   - {fileID: 1976070912593036742}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ControlHide: MonoBehaviour
 {
-    public GameObject ControlsUI;
+    private GameObject ControlsUI;
     public GameObject icon;
     public AudioSource pickup;
 
@@ -13,6 +13,7 @@ public class ControlHide: MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             ControlsUI = GameObject.FindGameObjectWithTag("ControlUI");
+            //ControlsUI.SetActive(false);
             StartCoroutine(HideControl());
             pickup.Play();
             icon.SetActive(false);
