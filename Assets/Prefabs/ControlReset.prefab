@@ -281,4 +281,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  icon: {fileID: 3930661655550390409}
   pickup: {fileID: 5752328250415023815}

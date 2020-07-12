@@ -5,6 +5,8 @@ using UnityEngine;
 public class ResetControlsBooster : MonoBehaviour
 {
     public CarController player;
+    public GameObject icon;
+
     public AudioSource pickup;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -16,7 +18,18 @@ public class ResetControlsBooster : MonoBehaviour
             player.ResetControls();
             pickup.Play();
             print("Playing");
-            Destroy(gameObject);
+            icon.SetActive(false);
+
+            StartCoroutine(delayedDestroy(3f));
         }
+    }
+
+    IEnumerator delayedDestroy(float f)
+    {
+
+        yield return new WaitForSeconds(f);
+
+        Destroy(gameObject);
+
     }
 }
