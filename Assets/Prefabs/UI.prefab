@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
+  camera: {fileID: 0}
   lapTimer: {fileID: 0}
   totalTimeText: {fileID: 0}
   timesText: {fileID: 0}
@@ -577,6 +578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 4321263692930576002}
+  camera: {fileID: 0}
   lapTimer: {fileID: 4649597920900156804}
   totalTimeText: {fileID: 8907451328907611728}
   timesText: {fileID: 2055112303102148588}
@@ -2032,6 +2034,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ControlsUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278875725103886862, guid: 25b74e47a74dd134892610f7a93a041b,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlUI
       objectReference: {fileID: 0}
     - target: {fileID: 4278875725103886863, guid: 25b74e47a74dd134892610f7a93a041b,
         type: 3}

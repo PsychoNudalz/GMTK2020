@@ -13,6 +13,7 @@ public class CheckpointScript : MonoBehaviour
     [Header("Effects")]
     [SerializeField] private ParticleSystem particleSystem;
     [SerializeField] private SpriteRenderer[] lights;
+    public AudioSource checkpointSound;
     [Header("Power ups")]
     public bool spawnPowerUp = true;
     public GameObject[] powerupList;
@@ -39,7 +40,7 @@ public class CheckpointScript : MonoBehaviour
             if (willRandom)
             {
                 collision.gameObject.GetComponent<PlayerState>().randomiseControls();
-
+                checkpointSound.Play();
             }
         }
 
