@@ -5277,6 +5277,11 @@ PrefabInstance:
       propertyPath: numberOfLaps
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4649597920900156804, guid: 936e7b69e7d744a4185b5379c30f6616,
+        type: 3}
+      propertyPath: LevelName
+      value: Level 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5327898719193055919, guid: 936e7b69e7d744a4185b5379c30f6616,
         type: 3}
       propertyPath: playerCar
