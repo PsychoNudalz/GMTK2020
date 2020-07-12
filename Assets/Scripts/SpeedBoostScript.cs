@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class SpeedBoostScript : MonoBehaviour
 {
-    public CarController player;
+    public PlayerState player;
     public GameObject icon;
     public AudioSource pickup;
+    public SpeedModifier speedModifier;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            player = collision.GetComponent<CarController>();
+            player = collision.GetComponent<PlayerState>();
+            print(player);
+            speedModifier.setPlayerState(player);
             print("Boosted!");
             StartCoroutine(increaseSpeed());
             pickup.Play();
@@ -22,11 +25,16 @@ public class SpeedBoostScript : MonoBehaviour
 
     IEnumerator increaseSpeed()
     {
-        float currentAccel = player.getAccel();
-        player.setAccel(currentAccel * 1.5f);
-        yield return new WaitForSeconds(3);
+        /*
+        */
+        float currentAccel = player.carController.getAccel();
+        player.carController.setAccel(currentAccel * 2.5f);
         print("reset to " + currentAccel);
-        player.setAccel(currentAccel);
+
+        speedModifier.addSpeed();
+        yield return new WaitForSeconds(3);
+        speedModifier.removeSpeed();
+        player.carController.setAccel(currentAccel);
         Destroy(gameObject);
 
     }

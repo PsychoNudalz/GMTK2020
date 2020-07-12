@@ -98,4 +98,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerState: {fileID: 0}
   modifierName: BaseTrack
-  modifierValue: 1.5
+  modifierValue: 1.4
+  pickUp: 0

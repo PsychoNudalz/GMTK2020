@@ -107,4 +107,6 @@ public class GameManagerScript : MonoBehaviour
             AICar.GetComponent<CarController>().isRunning = b;
         }
     }
+
+   
 }

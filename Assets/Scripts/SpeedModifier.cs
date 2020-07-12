@@ -11,23 +11,52 @@ public class SpeedModifier : MonoBehaviour
     
     [SerializeField] private float modifierValue;
     public float ModifierValue { get => modifierValue; set => modifierValue = value; }
+    public PlayerState PlayerState { get => playerState; set => playerState = value; }
 
+    public bool pickUp = false;
     private void Awake()
     {
-        if (playerState.Equals(null))
+        /*
+        if (PlayerState.Equals(null))
         {
-            playerState = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>();
+            PlayerState = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>();
         }
+        */
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        playerState.addMaxSpeedMod(gameObject.GetComponent<SpeedModifier>());
+        if (!pickUp)
+        {
+        PlayerState.addMaxSpeedMod(gameObject.GetComponent<SpeedModifier>());
+
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        playerState.removeMaxSpeedMod(gameObject.GetComponent<SpeedModifier>());
+        if (!pickUp)
+        {
+        PlayerState.removeMaxSpeedMod(gameObject.GetComponent<SpeedModifier>());
 
+        }
+
+    }
+
+    public void addSpeed()
+    {
+        PlayerState.addMaxSpeedMod(gameObject.GetComponent<SpeedModifier>());
+
+    }
+
+    public void removeSpeed()
+    {
+        PlayerState.removeMaxSpeedMod(gameObject.GetComponent<SpeedModifier>());
+
+    }
+
+    public void setPlayerState(PlayerState p)
+    {
+        playerState = p;
     }
 }
