@@ -9729,7 +9729,7 @@ MonoBehaviour:
   slowed: 0
   revving: {fileID: 1389280096}
   backgroundRevs: {fileID: 401802371}
-  immune: 1
+  immune: 0
 --- !u!114 &1802191898
 MonoBehaviour:
   m_ObjectHideFlags: 0
